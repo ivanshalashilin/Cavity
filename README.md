@@ -126,8 +126,73 @@ changing the mirror length. We didn't do it this way but reading his thesis may 
 # Data acquistion (DAQ)
 
 Data logging was used extensively in the project. To monitor cavity signal, we used a
-PXIe and NI DAQs interfaced by Labview. In the folder 
+PXIe and NI DAQs interfaced by Labview. This is found in the folder `Labview`
 
+(note for Jacob: write up Putty + Labview)
+
+
+# Electro optical modulator (EOM)
+
+Throughout the project we used an EOM to determine the cavity nonlinearities and
+concluded they are a material property of the PZT. There is currently an EOM on our
+bench with a resonant frequency of 94.9MHz that can be inserted between the PBS and
+lens. We used a vector network analyser to determine the resonant frequency which can be
+found in Blackett. The EOM is driven by a voltage controlled oscillator (VCO) amplifed
+by an RF amp.
+
+
+# Improvements
+
+With our setup the 1104nm stayed lock for 1.9 days with a spread of 1.6 MHz, and there
+are plenty of areas for improvement:
+
+- Hardware interrupts: Currently the peaks are found by continuously looping over the
+  pins. Instead, the peak detection needs to be done with a hardware interrupt,
+  effectively increasing the detection resolution, and allowing for more corrections per
+  second. Our current setup only optimally allows for correction speed of $\sim$ 5Hz, even though
+  we were driving the cavity at 15Hz. With interrupts, we believe this could go $\sim$ 100-1000Hz
+
+- Auto initialisation: The function generator DC offset needs to be manually adjusted
+  for the correct locking configuration (780-1104-780). A better method would be to scan
+  the offset to find an ideal configuration and determine the setpoint from there.
+
+- Peak detector TTL output: the peak detector boxes take all the photodiode signal, so it can't be
+  split to observe on both the photodiode and the scope at the same time. Maybe some
+  resistors are needed.
+
+
+- Different cavity mirrors: the cavity mirrors (Layertec 103950), which make a cavity
+  with very low transmission, and has been studied before by James Almond (PhD thesis,
+  page 94, footnote 11)
+
+- Dichoric mirror and PBS: the dichroic mirror has high absorption, significantly
+  attenuating the 780nm reflected beam.
+  
+  
+- Higher power: 0.4mW is passed into the cavity at 780nm. With a 50$\Omega$ input impedance the entire
+  signal was attenuated which is not sufficient to
+  perform a proper finesse calculation. Using a more powerful beam allows allows for
+  smaller resistor
+
+- Ringdown measurement: ask Jonas how to do it. We attempted but didn't have enough
+  power/the AOM was not quick enough (unsure).
+
+- ECDL feedback: in our setup we used an amplifier to send the feedback signal to the
+  ECDL, which ended up being our main source of error. This can be removed, and was only
+  used as a proof of concept to scan a larger range in frequency space.
+
+- Peak detector box accuracy and variance: the output TTL has a large variance and a
+  systematic shift from the true peak centre. This should characterised and
+  investigated.
+  
+- Peak detector box issues: 10mV noise on the output and grounding issues
+
+- New cavity: The current cavity quartz is cracked, and possibly not the right length.
+  We cut and glued a new one but maybe used too much glue inside the cavity, meaning the
+  thermal compensation won't work properly
+
+- Hermetic seal: we believe the seal may be slightly leaky, which according to John
+  Barry leads to a drift of many, many FSRs.
 
 # Parts list 
 
