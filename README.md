@@ -149,10 +149,13 @@ General notes about the LabView software:
 - The "Current NI PXIe-1073  Physical Config" is an old placeholder (may be ignored).
 - This code is quite rudimentary. If all you want is photodiode/temperature data it will work but we would recommend building a new program in LabView from scratch that is more optimized (this one uses a double for loop...)
 
+**Add a picture of the code here and explain below**
+
 ## Putty
 
 To collect data from the Arduino Due
-
+**(Finish writing this)**
+**Remember to add old version of code**
 
 # Electro optical modulator (EOM)
 
