@@ -133,7 +133,7 @@ PXIe and NI DAQs interfaced by Labview. This is found in the folder `Labview`. T
 ## LabView Program
 
 To collect photodiode voltage and Thermocouple temperature a custom built LabView software was created. To avoid large files and memory overflow the program saves collected data periodically in seperate files rather than in one file all at once. 
-![](assets/STCL_algo_cartoon.png)
+![](/assets/LabViewUI_labels.png)
 The above image shows what the UI for the program looks like during operation. To set up data collection:
 - Choose two PXIe physicals to view/record. Typically for the STCL this is the function generator and the photodiode.
 - Set the desired length in milliseconds between data collections.
