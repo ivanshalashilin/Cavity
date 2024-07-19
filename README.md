@@ -126,13 +126,32 @@ changing the mirror length. We didn't do it this way but reading his thesis may 
 # Data acquistion (DAQ)
 
 Data logging was used extensively in the project. To monitor cavity signal, we used a
-PXIe and NI DAQs interfaced by Labview. This is found in the folder `Labview`
+PXIe and NI DAQs interfaced by Labview. This is found in the folder `Labview`. The PXIe has a breakout board with many pins, the board guide that matches up the names of the physical pins and the physical channel names you'll see in LabView is avalaible from [NI's website](https://www.ni.com/knowledgebase/attachments/A1866E353248893C862571BD000CEB62_SCB-6820653X.pdf).
 
 (note for Jacob: write up Putty + Labview)
 
 ## LabView Program
 
-To collect photodiode voltage and Thermocouple temperature a custom built LabView software was created. This can be found in the folder 'LabView'. 
+To collect photodiode voltage and Thermocouple temperature a custom built LabView software was created. To avoid large files and memory overflow the program saves collected data periodically in seperate files rather than in one file all at once. 
+![](assets/STCL_algo_cartoon.png)
+The above image shows what the UI for the program looks like during operation. To set up data collection:
+- Choose two PXIe physicals to view/record. Typically for the STCL this is the function generator and the photodiode.
+- Set the desired length in milliseconds between data collections.
+- Set the `Data rate` and `samples per channel`. Making the rate too high can cause issues with the signal.
+- Generally always leave the max/min at 10/-10 and the `Al.TermCfg` to `RSE`. 
+- When you first run the code you will be prompted to add an image. Adding any image file will work (this is a deprecated part of the code and should be removed).
+- The iteration counter keeps track of how many times the data has saved.
+- The file paths to save the photodiode voltage and thermocouple temperature txt **must be set manually** in the LabView code. 
+
+
+General notes about the LabView software:
+- There are no settings for the thermocouples as these were set manually in the LabView code. They may be changed by editing the code directly. 
+- The "Current NI PXIe-1073  Physical Config" is an old placeholder (may be ignored).
+- This code is quite rudimentary. If all you want is photodiode/temperature data it will work but we would recommend building a new program in LabView from scratch that is more optimized (this one uses a double for loop...)
+
+## Putty
+
+To collect data from the Arduino Due
 
 
 # Electro optical modulator (EOM)
@@ -155,6 +174,8 @@ are plenty of areas for improvement:
   effectively increasing the detection resolution, and allowing for more corrections per
   second. Our current setup only optimally allows for correction speed of $\sim$ 5Hz, even though
   we were driving the cavity at 15Hz. With interrupts, we believe this could go $\sim$ 100-1000Hz
+
+- The data types in the code are **not set correctly to save putty data**. This does not prevent the STCL from running. The variables that are initialized as `unsigned long` should be changed to another type e.g. `double`.
 
 - Auto initialisation: The function generator DC offset needs to be manually adjusted
   for the correct locking configuration (780-1104-780). A better method would be to scan
