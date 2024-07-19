@@ -130,6 +130,10 @@ PXIe and NI DAQs interfaced by Labview. This is found in the folder `Labview`
 
 (note for Jacob: write up Putty + Labview)
 
+## LabView Program
+
+To collect photodiode voltage and Thermocouple temperature a custom built LabView software was created. This can be found in the folder 'LabView'. 
+
 
 # Electro optical modulator (EOM)
 
