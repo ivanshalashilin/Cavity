@@ -27,3 +27,8 @@ The below table gives the approximate tolerances and thermal expansivities of th
 
 ## Time-Dependence
 It was found when using a step-change temperature the time for each material of the cavity became important. In the above equations T had to be replaced by T_{app}(t)=T_{max}\left(1-e^{-t/\tau_{H}}\right). A definitive model was not established. See [Opt. Express 23, 5134-5146 (2015)](https://doi.org/10.1364/OE.23.005134) and [J. Opt. Soc. Am. B 27, 914-919 (2010)](https://doi.org/10.1364/JOSAB.27.000914) for information on the methodology. We suggest a finite-element analysis is required to conclusively determine the time-temperature dependence
+
+
+## Experimental Results
+Below is a graph showing the change in length (alt. frequency) of the cavity peaks as a 10 degree Celsius heat change is applied.  
+![](/assets/project/thermal.png)

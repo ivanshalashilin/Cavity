@@ -206,7 +206,7 @@ are plenty of areas for improvement:
   smaller resistor
 
 - Ringdown measurement: ask CCM member Jonas for more information. We attempted this but didn't have enough
-  power/the AOM was not quick enough (unsure). See [AOM.png](WriteUp\Cavity\assets\project\AOM.png) for the experimental set-up we tried. 
+  power/the AOM was not quick enough (unsure). See [AOM](WriteUp\Cavity\assets\project\AOM.png) for the experimental set-up we tried. 
 
 - ECDL feedback: in our setup we used an amplifier to send the feedback signal to the
   ECDL, which ended up being our main source of error. This can be removed, and was only
