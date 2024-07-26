@@ -273,7 +273,7 @@ are plenty of areas for improvement:
 
 
 # Thermal
-See the page [Thermal](WriteUp\Cavity\Thermal.md) for detail on the thermal characterization of the cavity. 
+See the page [Thermal](Thermal.md) for detail on the thermal characterization of the cavity. 
 
 
 # Misc.
