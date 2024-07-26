@@ -6,20 +6,20 @@ This document serves as a brief overview of the status of research on the therma
 
 ## Linear Theory
 The basic theory relies on minimizing the equation:
-\\
+$
 \Delta L=\left(\alpha_{Q}L_{Q}+\alpha_{P}L_{P}+\alpha_{M}L_{M}-\alpha_{S}L_{S}\right)\cdot T
-\\
+$
 where Q,P,M,S refer the the quartz, PZT, mirror, and steel, respectively. To minimize the thermal expansion whilst also specifying a particular length of the cavity (e.g. a confocal configuration) the two simultaneous equations must be satisfied:
-$$
+$
 \alpha_{Q}L_{Q}+\alpha_{P}L_{P}+\alpha_{M}L_{M}	-\alpha_{S}L_{S}=0
 L_{Q}+L_{P}+L_{M}-L_{S}	=L_{\text{cavity}}.
-$$
+$
 and 
-$$
+$
 \alpha_{Q}L_{Q}+\alpha_{P}L_{P}+\alpha_{M}L_{M}	-\alpha_{S}L_{S}=0
 L_{Q}+L_{P}+L_{M}-L_{S}	=L_{\text{cavity}}.
-$$
-Two equations with two unknowns: L_{Q},L_{S}.
+$
+Two equations with two unknowns: $L_{Q},L_{S}$.
 
 ## Nonlinear Theory
 The equation $\Delta L=\alpha LT$ is a linear approximation to the full equation $L(T)=L_{0}e^{\alpha T}$. The same thermal constraint cannot be applied to the full version of the equation. Nonlinear contributions in this set-up are estimated to be on the order of $\Delta L/L\sim10^{-10}$.
