@@ -18,7 +18,7 @@ The equation $\Delta L=\alpha LT$ is a linear approximation to the full equation
 ## Machining Tolerance
 The below table gives the approximate tolerances and thermal expansivities of the materials used.
 
-|     Component    | Expansivity $$(10^{-6}\mathrm{K^{-1}})$$ | Approx. Tolerance $$(\mathrm{\mu m})$$ |
+|     Component    | Expansivity $(10^{-6}\mathrm{K^{-1}})$ | Approx. Tolerance $(\mathrm{\mu m})$ |
 |:----------------:|:------------------------------------:|:----------------------------------:|
 |    Quartz Tube   |                  0.4                 |                 50                 |
 |    1020 Steel    |                 11.7                 |                 25                 |
