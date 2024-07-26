@@ -135,7 +135,7 @@ PXIe and NI DAQs interfaced by Labview. This is found in the folder `Labview`. T
 To collect photodiode voltage and Thermocouple temperature a custom built LabView software was created. To avoid large files and memory overflow the program saves collected data periodically in seperate files rather than in one file all at once. 
 ![](/assets/LabViewUI_labels.png)
 The above image shows what the UI for the program looks like during operation. To set up data collection:
-- Choose two PXIe physicals to view/record. Typically for the STCL this is the function generator and the photodiode.
+- Choose two PXIe physical channels to view/record. Typically for the STCL this is the function generator and the photodiode.
 - Set the desired length in milliseconds between data collections.
 - Set the `Data rate` and `samples per channel`. Making the rate too high can cause issues with the signal.
 - Generally always leave the max/min at 10/-10 and the `Al.TermCfg` to `RSE`. 
@@ -149,11 +149,13 @@ General notes about the LabView software:
 - The "Current NI PXIe-1073  Physical Config" is an old placeholder (may be ignored).
 - This code is quite rudimentary. If all you want is photodiode/temperature data it will work but we would recommend building a new program in LabView from scratch that is more optimized (this one uses a double for loop...)
 
-**Add a picture of the code here and explain below**
-
 ## Putty
-
-To collect data from the Arduino Due
+![](/assets/putty)
+To collect data from the Arduino Due (e.g. times of peak detection) we used the software Putty, available for [download online](https://www.putty.org). The Arduino must be plugged into the computer for Putty to work. We recommend using the official [Arduino IDE](https://www.arduino.cc/en/software) whilst trying to log data. The process for logging is as follows:
+- Specify the COM line and baud rate in Putty (this information will be visible in the Arduino IDE).
+- Set logging settings (location, name, etc.)
+- Begin Putty session.
+- Activate Aruino code.
 **(Finish writing this)**
 **Remember to add old version of code**
 
