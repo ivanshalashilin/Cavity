@@ -272,6 +272,9 @@ are plenty of areas for improvement:
 - Insulating foil
 
 
+# Thermal
+See the page [Thermal](WriteUp\Cavity\Thermal.md) for detail on the thermal characterization of the cavity. 
 
-## Misc.
+
+# Misc.
 If you would like any additional information of access to the data please contact the authors or the CCM. 
