@@ -150,14 +150,13 @@ General notes about the LabView software:
 - This code is quite rudimentary. If all you want is photodiode/temperature data it will work but we would recommend building a new program in LabView from scratch that is more optimized (this one uses a double for loop...)
 
 ## Putty
-![](/assets/putty)
+![](/assets/putty.png)
 To collect data from the Arduino Due (e.g. times of peak detection) we used the software Putty, available for [download online](https://www.putty.org). The Arduino must be plugged into the computer for Putty to work. We recommend using the official [Arduino IDE](https://www.arduino.cc/en/software) whilst trying to log data. The process for logging is as follows:
 - Specify the COM line and baud rate in Putty (this information will be visible in the Arduino IDE).
 - Set logging settings (location, name, etc.)
 - Begin Putty session.
 - Activate Aruino code.
-**(Finish writing this)**
-**Remember to add old version of code**
+
 
 # Electro optical modulator (EOM)
 
