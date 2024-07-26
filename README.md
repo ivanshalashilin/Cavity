@@ -36,10 +36,12 @@ a TTL (digital) pulse for use in locking. This is done as follows:
 3. Repeat 2 for diff gain and threshold
 4. Change pulse width to desired value (see below)
 
+The schematics/circuit diagrams for the peak detector boxes are available in the CCM.
+
 ## Arduino
 
 The Arduino Due takes 4 digital inputs - TTL 780nm, TTL 1104nm, rising and falling edge of
-function generator scan trigger, and two digital outputs for feedback to the cavity and
+function generator scan trigger. There are two digital outputs for feedback to the cavity and
 the laser. The Arduino is set up as follows:
 
 (pin values are arbitrary. Choose whatever corresponds to the code/is convenient)
@@ -173,6 +175,8 @@ by an RF amp.
 With our setup the 1104nm stayed lock for 1.9 days with a spread of 1.6 MHz, and there
 are plenty of areas for improvement:
 
+- **Amplified photodiode**: The transmission on the current cavity mirrors is low, even on resonance (James Almond [PhD Thesis](https://www.imperial.ac.uk/centre-for-cold-matter/publications/theses/) 2017 page 94, footnote 11). We found that a reliable signal for STCL was only possible with amplified photodiodes. 
+
 - Hardware interrupts: Currently the peaks are found by continuously looping over the
   pins. Instead, the peak detection needs to be done with a hardware interrupt,
   effectively increasing the detection resolution, and allowing for more corrections per
@@ -182,36 +186,34 @@ are plenty of areas for improvement:
 - The data types in the code are **not set correctly to save putty data**. This does not prevent the STCL from running. The variables that are initialized as `unsigned long` should be changed to another type e.g. `double`.
 
 - Auto initialization: The function generator DC offset needs to be manually adjusted
-  for the correct locking configuration (780-1104-780). A better method would be to scan
+  for the correct locking configuration (780nm-1104nm-780nm). A better method would be to scan
   the offset to find an ideal configuration and determine the setpoint from there.
 
 - Peak detector TTL output: the peak detector boxes take all the photodiode signal, so it can't be
   split to observe on both the photodiode and the scope at the same time. Maybe some
   resistors are needed.
 
-
-- Different cavity mirrors: the cavity mirrors (Layertec 103950), which make a cavity
-  with very low transmission, and has been studied before by James Almond (PhD thesis,
+- **Different cavity mirrors**: the cavity mirrors (Layertec 103950), which make a cavity
+  with very low transmission, and has been studied before by James Almond ([PhD thesis](https://www.imperial.ac.uk/centre-for-cold-matter/publications/theses/) 2017,
   page 94, footnote 11)
 
 - Dichoric mirror and PBS: the dichroic mirror has high absorption, significantly
   attenuating the 780nm reflected beam.
-  
   
 - Higher power: 0.4mW is passed into the cavity at 780nm. With a 50$\Omega$ input impedance the entire
   signal was attenuated which is not sufficient to
   perform a proper finesse calculation. Using a more powerful beam allows allows for
   smaller resistor
 
-- Ringdown measurement: ask Jonas how to do it. We attempted but didn't have enough
-  power/the AOM was not quick enough (unsure).
+- Ringdown measurement: ask CCM member Jonas for more information. We attempted this but didn't have enough
+  power/the AOM was not quick enough (unsure). See [AOM.png](WriteUp\Cavity\assets\project\AOM.png) for the experimental set-up we tried. 
 
 - ECDL feedback: in our setup we used an amplifier to send the feedback signal to the
   ECDL, which ended up being our main source of error. This can be removed, and was only
   used as a proof of concept to scan a larger range in frequency space.
 
 - Peak detector box accuracy and variance: the output TTL has a large variance and a
-  systematic shift from the true peak centre. This should characterized and
+  systematic shift from the true peak centre. This should be characterized and
   investigated.
   
 - Peak detector box issues: 10mV noise on the output and grounding issues
@@ -222,6 +224,10 @@ are plenty of areas for improvement:
 
 - Hermetic seal: we believe the seal may be slightly leaky, which according to John
   Barry leads to a drift of many, many FSRs.
+
+- Laser locking: during long-term (3 days +) runs to establish thermal performance the laser may unlock. This makes it difficult to seperate thermal drift from laser drift. Ensure the laser is locked before taking thermal data.
+
+- Applying heat: we applied heat as a step change (e.g. 10 degrees). It may be more useful to step the temperature in small increments instead.  
 
 # Parts list 
 
@@ -264,3 +270,8 @@ are plenty of areas for improvement:
 - Thermocouples
 - NI Thermocouple DAQ
 - Insulating foil
+
+
+
+## Misc.
+If you would like any additional information of access to the data please contact the authors or the CCM. 
