@@ -15,11 +15,11 @@ The STCL setup is as follows (parts list at the end):
 
 0. Set up the optics as in the diagram (except the dichroic)
 1. Fibre light from 1104nm and 780nm into fibre collimators
-2. Pass 780nm light through half waveplate. Rotate waveplate until it is relfected at the
-   polarising beam splitter (PBS)
+2. Pass 780nm light through half waveplate. Rotate waveplate until it is reflected at the
+   polarizing beam splitter (PBS)
 3. Turn on function generator, amplify the signal, and scan the cavity with a
    sawtooth/triangle wave at $\sim$ 5-15Hz
-4. Couple 1104nm into the cavity (alignment tips below), until signal is maximised. Monitor output with amplified
+4. Couple 1104nm into the cavity (alignment tips below), until signal is maximized. Monitor output with amplified
    photodiode on an oscilloscope
 5. Align 780nm into the cavity via the PBS
 6. Align dichroic mirror and second photodiode to split 780nm onto the second channel
@@ -48,7 +48,7 @@ the laser. The Arduino is set up as follows:
 2. Split the function gen trigger signal and connect to pin 30 and pin 26
 3. Connect the 1104nm feedback to DAC0 and the cavity feedback to DAC1
 4. Connect low pass filters (cutoff $\sim$ 1000 Hz) on the analog outputs
-5. During operational STCL, combine the amplifed function generator and cavity feedback with the
+5. During operational STCL, combine the amplified function generator and cavity feedback with the
    voltage summer, then send to cavity
 6. Adjust offset on function gen until the cavity is scanning a FSR with an 1104nm peak in
    the middle of two 780nm peaks
@@ -126,13 +126,13 @@ changing the mirror length. We didn't do it this way but reading his thesis may 
 # Data acquistion (DAQ)
 
 Data logging was used extensively in the project. To monitor cavity signal, we used a
-PXIe and NI DAQs interfaced by Labview. This is found in the folder `Labview`. The PXIe has a breakout board with many pins, the board guide that matches up the names of the physical pins and the physical channel names you'll see in LabView is avalaible from [NI's website](https://www.ni.com/knowledgebase/attachments/A1866E353248893C862571BD000CEB62_SCB-6820653X.pdf).
+PXIe and NI DAQs interfaced by Labview. This is found in the folder `Labview`. The PXIe has a breakout board with many pins, the board guide that matches up the names of the physical pins and the physical channel names you'll see in LabView is available from [NI's website](https://www.ni.com/knowledgebase/attachments/A1866E353248893C862571BD000CEB62_SCB-6820653X.pdf).
 
 (note for Jacob: write up Putty + Labview)
 
 ## LabView Program
 
-To collect photodiode voltage and Thermocouple temperature a custom built LabView software was created. To avoid large files and memory overflow the program saves collected data periodically in seperate files rather than in one file all at once. 
+To collect photodiode voltage and Thermocouple temperature a custom built LabView software was created. To avoid large files and memory overflow the program saves collected data periodically in separate files rather than in one file all at once. 
 ![](/assets/LabViewUI_labels.png)
 The above image shows what the UI for the program looks like during operation. To set up data collection:
 - Choose two PXIe physical channels to view/record. Typically for the STCL this is the function generator and the photodiode.
@@ -165,7 +165,7 @@ Throughout the project we used an EOM to determine the cavity nonlinearities and
 concluded they are a material property of the PZT. There is currently an EOM on our
 bench with a resonant frequency of 94.9MHz that can be inserted between the PBS and
 lens. We used a vector network analyser to determine the resonant frequency which can be
-found in Blackett. The EOM is driven by a voltage controlled oscillator (VCO) amplifed
+found in Blackett. The EOM is driven by a voltage controlled oscillator (VCO) amplified
 by an RF amp.
 
 
@@ -182,7 +182,7 @@ are plenty of areas for improvement:
 
 - The data types in the code are **not set correctly to save putty data**. This does not prevent the STCL from running. The variables that are initialized as `unsigned long` should be changed to another type e.g. `double`.
 
-- Auto initialisation: The function generator DC offset needs to be manually adjusted
+- Auto initialization: The function generator DC offset needs to be manually adjusted
   for the correct locking configuration (780-1104-780). A better method would be to scan
   the offset to find an ideal configuration and determine the setpoint from there.
 
@@ -212,7 +212,7 @@ are plenty of areas for improvement:
   used as a proof of concept to scan a larger range in frequency space.
 
 - Peak detector box accuracy and variance: the output TTL has a large variance and a
-  systematic shift from the true peak centre. This should characterised and
+  systematic shift from the true peak centre. This should characterized and
   investigated.
   
 - Peak detector box issues: 10mV noise on the output and grounding issues
@@ -241,7 +241,7 @@ are plenty of areas for improvement:
 - Lowpass filters (homebuilt)
 - Electro optical modulator (EOM, homebuilt)
 - Arduino Due microcontroller
-- PXIe data acquistion box
+- PXIe data acquisition box
 - **Amplified** photodiodes x 2 
 - Peak detector boxes (homebuilt, find these in Blackett bay 1)
 
@@ -253,7 +253,7 @@ are plenty of areas for improvement:
 - Fibre collimtors x 2 – [Thorlabs
   F280APC-C](https://www.thorlabs.com/thorproduct.cfm?partnumber=F280APC-C) (one of them
   may be B coated rather than C)
-- Polarising beam splitter
+- Polarizing beam splitter
 - f=150mm B coated lens (subject to change) – [Thorlabs LA1433-B](https://www.thorlabs.com/thorproduct.cfm?partnumber=LA1433-B)
 - Half waveplate
 - Dichroic mirror – [Thorlabs DMLP950](https://www.thorlabs.com/thorproduct.cfm?partnumber=DMLP950)
